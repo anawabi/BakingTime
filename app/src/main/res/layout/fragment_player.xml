@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:controller_layout_id="@layout/exo_playback_control_view"
+        android:layout_weight="0"
+        app:fastforward_increment="1000"
+        app:rewind_increment="1000" />
+
+    <TextView
+        android:id="@+id/step_instruction_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:text="@string/hardcoded_step_instruction"/>
+</LinearLayout>

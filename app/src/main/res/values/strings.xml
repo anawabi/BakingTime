@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Baking App</string>
+    <string name="connection_error_title">Connection Error</string>
+    <string name="connection_error">Recipe data cannot be loaded. Check for your connection.</string>
+    <string name="close_on_intent_error">No data is found.</string>
+    <string name="reload_button">Reload</string>
+    <string name="ingredient_name_hardcoded">lemon juices</string>
+    <string name="ingredient_amount_hardcoded">2 tablespoons</string>
+    <string name="ingredient_amount">%f %s</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
+    <string name="widget_recipe_name">Recipe Name</string>
+    <string name="empty_text">Ingredients are unavailable</string>
+    <string name="hardcoded_step_instruction">6. Scrape down the sides of the pan. Add in the eggs one at a time, beating each one on medium-low speed just until incorporated. Scrape down the sides and bottom of the bowl. Add in both egg yolks and beat until just incorporated.</string>
+
+</resources>

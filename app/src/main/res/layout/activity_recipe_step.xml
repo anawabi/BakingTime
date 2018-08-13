@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Hello"
+        app:titleTextColor="@color/colorWhite"
+        android:background="@color/colorPrimary" >
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/player_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="center|bottom">
+        <!--<Button-->
+            <!--android:id="@+id/back_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/previous_button"-->
+            <!--android:drawableLeft="@drawable/ic_arrow_back_black_24dp"-->
+            <!--android:drawableStart="@drawable/ic_arrow_back_black_24dp"-->
+            <!--android:gravity="center"-->
+            <!--android:textAlignment="gravity"-->
+            <!--android:layout_weight="1"-->
+            <!--android:onClick="previousOnClick" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/forward_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/next_button"-->
+            <!--android:textAlignment="gravity"-->
+            <!--android:drawableRight="@drawable/ic_arrow_forward_black_24dp"-->
+            <!--android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:onClick="nextOnClick" />-->
+
+    </LinearLayout>
+
+</LinearLayout>
