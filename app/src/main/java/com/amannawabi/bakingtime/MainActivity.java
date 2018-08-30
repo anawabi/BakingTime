@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,7 +20,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.amannawabi.bakingtime.IdleRes.SimpleIdelingResource;
@@ -27,7 +27,7 @@ import com.amannawabi.bakingtime.Model.Recipe;
 import com.amannawabi.bakingtime.Utils.RecipeClient;
 import com.amannawabi.bakingtime.Utils.RecipesAdapter;
 import com.amannawabi.bakingtime.Utils.RetrofitClient;
-import com.amannawabi.bakingtime.Widget.WidgetUpdateService;
+import com.amannawabi.bakingtime.Widget.UpdateService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,29 +71,14 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.It
             mRecipes = savedInstanceState.getParcelableArrayList(RECIPES_EXTRA);
             setUpRecyclerView();
         } else {
+            mIdlingResource.setIdleState(false);
             setUpRecipeData();
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(RECIPES_EXTRA, (ArrayList<Recipe>) mRecipes);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void setUpRecyclerView() {
-        //test idling resource
+
         if (mIdlingResource != null) {
             mIdlingResource.setIdleState(true);
         }
@@ -102,7 +87,11 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.It
         if (istablet) {
             mLayoutManager = new GridLayoutManager(this, 2);
         } else {
-            mLayoutManager = new LinearLayoutManager(this);
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                mLayoutManager = new GridLayoutManager(this, 2);
+            } else {
+                mLayoutManager = new LinearLayoutManager(this);
+            }
         }
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         RecipesAdapter recipesAdapter = new RecipesAdapter(this, this, mRecipes);
@@ -119,7 +108,9 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.It
             @Override
             public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
                 mRecipes = response.body();
+                mIdlingResource.setIdleState(true);
                 setUpRecyclerView();
+
             }
 
             @Override
@@ -145,11 +136,11 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.It
     @Override
     public void onItemClicked(int position) {
         Toast.makeText(getApplicationContext(), "Item is clicked at " + position, Toast.LENGTH_SHORT).show();
-        Recipe item = mRecipes.get(position);
+        Recipe mRecipeItemClicked = mRecipes.get(position);
         Intent detailRecipeListIntent = new Intent(MainActivity.this, DetailRecipeListActivity.class);
-        detailRecipeListIntent.putExtra(DetailRecipeListActivity.RECIPE_EXTRA, item);
+        detailRecipeListIntent.putExtra(DetailRecipeListActivity.RECIPE_EXTRA, mRecipeItemClicked);
 
-        WidgetUpdateService.startActionUpdateListView(getApplicationContext(), item);
+        UpdateService.startActionUpdateIngredients(getApplicationContext(), mRecipeItemClicked.getName().toString(), mRecipeItemClicked.getIngredients());
         startActivity(detailRecipeListIntent);
     }
 
@@ -164,5 +155,23 @@ public class MainActivity extends AppCompatActivity implements RecipesAdapter.It
 
         double screenDiagonal = Math.sqrt(Math.pow(wInches, 2) + Math.pow(hInches, 2));
         return (screenDiagonal >= 7.0);
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(RECIPES_EXTRA, (ArrayList<Recipe>) mRecipes);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

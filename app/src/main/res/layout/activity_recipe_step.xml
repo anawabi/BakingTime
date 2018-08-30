@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/step_layout">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolBar"
@@ -26,7 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,8 +38,8 @@
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:text="@string/previous_button"-->
-            <!--android:drawableLeft="@drawable/ic_arrow_back_black_24dp"-->
-            <!--android:drawableStart="@drawable/ic_arrow_back_black_24dp"-->
+        <!--android:drawableLeft="@drawable/ic_arrow_back_white_24dp"-->
+        <!--android:drawableStart="@drawable/ic_arrow_back_white_24dp"-->
             <!--android:gravity="center"-->
             <!--android:textAlignment="gravity"-->
             <!--android:layout_weight="1"-->
@@ -51,8 +51,8 @@
             <!--android:layout_height="wrap_content"-->
             <!--android:text="@string/next_button"-->
             <!--android:textAlignment="gravity"-->
-            <!--android:drawableRight="@drawable/ic_arrow_forward_black_24dp"-->
-            <!--android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"-->
+        <!--android:drawableRight="@drawable/ic_arrow_forward_white_24dp"-->
+        <!--android:drawableEnd="@drawable/ic_arrow_forward_white_24dp"-->
             <!--android:gravity="center"-->
             <!--android:layout_weight="1"-->
             <!--android:onClick="nextOnClick" />-->

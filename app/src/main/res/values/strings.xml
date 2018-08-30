@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Baking App</string>
+    <string name="app_name">Baking Time</string>
     <string name="connection_error_title">Connection Error</string>
     <string name="connection_error">Recipe data cannot be loaded. Check for your connection.</string>
     <string name="close_on_intent_error">No data is found.</string>
@@ -14,5 +14,12 @@
     <string name="widget_recipe_name">Recipe Name</string>
     <string name="empty_text">Ingredients are unavailable</string>
     <string name="hardcoded_step_instruction">6. Scrape down the sides of the pan. Add in the eggs one at a time, beating each one on medium-low speed just until incorporated. Scrape down the sides and bottom of the bowl. Add in both egg yolks and beat until just incorporated.</string>
-
+    <string name="pause_btn">Pause</string>
+    <string name="player_api">jelly_bean_mr1</string>
+    <string name="pre_btn_desc">Previous</string>
+    <string name="rewind_btn_desc">Rewind</string>
+    <string name="shufle_btn_desc">Shuffle</string>
+    <string name="play_btn_desc">Play</string>
+    <string name="fast_forward_btn_desc">FastForward</string>
+    <string name="next_btn_desc">Nest</string>
 </resources>

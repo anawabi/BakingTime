@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.amannawabi.bakingtime.Model.Step;
@@ -65,7 +64,7 @@ public class StepActivity extends AppCompatActivity {
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Back button is clicked",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"Back button is clicked",Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -109,12 +108,15 @@ public class StepActivity extends AppCompatActivity {
 //        setEnablePreviousNextButton();
 //        populatePlayerView();
 //    }
-
+//
 //    public void setEnablePreviousNextButton(){
+//        Toast.makeText(this, "Next Prev button enabled" +currentPos, Toast.LENGTH_SHORT).show();
 //        if (currentPos == steps.size() - 1) {
 //            nextButton.setEnabled(false);
+//            previousButton.setEnabled(true);
 //        } else if (currentPos == 0) {
 //            previousButton.setEnabled(false);
+//            nextButton.setEnabled(true);
 //        } else {
 //            nextButton.setEnabled(true);
 //            previousButton.setEnabled(true);

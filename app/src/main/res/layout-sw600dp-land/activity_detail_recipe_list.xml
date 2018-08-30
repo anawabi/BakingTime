@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
@@ -8,14 +9,15 @@
 
         <FrameLayout
             android:id="@+id/detail_recipe_list_fragment"
-            android:layout_width="400dp"
+            android:layout_width="@dimen/vedio_frame_width_land_tablet"
             android:layout_height="match_parent" />
 
 
         <FrameLayout
             android:id="@+id/step_player_fragment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            tools:ignore="InconsistentLayout" />
 
 
 </LinearLayout>

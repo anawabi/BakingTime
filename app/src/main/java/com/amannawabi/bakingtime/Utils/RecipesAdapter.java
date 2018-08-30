@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.amannawabi.bakingtime.Model.Recipe;
 import com.amannawabi.bakingtime.R;
 
@@ -19,19 +18,19 @@ import java.util.List;
 
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeVH> {
 
-    Context mContext;
-    protected static ItemListener mItemListener;
-    public List<Recipe> mData = new ArrayList<>();
-    int[] drawableIds = {R.drawable.n_pie, R.drawable.brownies, R.drawable.yellow_cake, R.drawable.cheese_cake};
+    private Context mContext;
+    private static ItemListener mItemListener;
+    private List<Recipe> mRecipes;
+    private int[] drawableIds = {R.drawable.n_pie, R.drawable.brownies, R.drawable.yellow_cake, R.drawable.cheese_cake};
 
-    public RecipesAdapter(Context mContext, ItemListener mItemListener, List<Recipe> mData) {
+    public RecipesAdapter(Context mContext, ItemListener mItemListener, List<Recipe> recipes) {
         this.mContext = mContext;
-        this.mItemListener = mItemListener;
-        this.mData = mData;
+        RecipesAdapter.mItemListener = mItemListener;
+        this.mRecipes = recipes;
     }
 
     public void setRecipesData(ArrayList<Recipe> recipesData){
-        mData = recipesData;
+        mRecipes = recipesData;
         notifyDataSetChanged();
     }
 
@@ -49,13 +48,13 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeVH
 
     @Override
     public void onBindViewHolder(@NonNull RecipeVH holder, int position) {
-        mData.get(position).setImageId(drawableIds[position]);
-        holder.setData(mData.get(position), position);
+        mRecipes.get(position).setImageId(drawableIds[position]);
+        holder.setData(mRecipes.get(position), position);
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mRecipes.size();
     }
 
     public class RecipeVH extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -63,7 +62,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeVH
         TextView recipeTv;
         int posVh;
 
-        public RecipeVH(View itemView) {
+        RecipeVH(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
@@ -71,8 +70,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeVH
             recipeTv = itemView.findViewById(R.id.recipe_tv);
         }
 
-        public void setData(Recipe data, int pos) {
-            recipeTv.setText(data.getName());
+        void setData(Recipe data, int pos) {
+            recipeTv.setText(data.getName().toUpperCase());
             recipeIv.setImageResource(data.getImageId());
             posVh = pos;
         }

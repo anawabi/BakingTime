@@ -17,6 +17,7 @@ import android.view.ViewParent;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -28,15 +29,14 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 
-@LargeTest
 @RunWith(AndroidJUnit4.class)
-public class StepActivityTest {
+@LargeTest
+public class MainActivityTest {
+
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
@@ -61,8 +61,9 @@ public class StepActivityTest {
     public void unRegisterIdelingResource() {
         IdlingRegistry.getInstance().unregister(mIdelingResource);
     }
+
     @Test
-    public void stepActivityTest() {
+    public void detailRecipeActivityTest() {
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recipe_rv),
                         childAtPosition(
@@ -70,32 +71,15 @@ public class StepActivityTest {
                                 0)));
         recyclerView.perform(actionOnItemAtPosition(0, click()));
 
-        ViewInteraction recyclerView2 = onView(
-                allOf(withId(R.id.lv),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.short_description_tv), withText("Recipe Ingredients"),
                         childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)));
-        recyclerView2.perform(actionOnItemAtPosition(1, click()));
-
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(4928);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction linearLayout = onView(
-                allOf(withId(R.id.step_layout),
-                        childAtPosition(
-                                allOf(withId(android.R.id.content),
-                                        childAtPosition(
-                                                withId(R.id.decor_content_parent),
-                                                0)),
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
                                 0),
                         isDisplayed()));
-        linearLayout.check(matches(isDisplayed()));
+        textView.check(matches(withText("Recipe Ingredients")));
 
     }
 
@@ -117,4 +101,6 @@ public class StepActivityTest {
             }
         };
     }
+
+
 }

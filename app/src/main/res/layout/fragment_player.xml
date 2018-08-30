@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -8,18 +8,27 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        app:controller_layout_id="@layout/exo_playback_control_view"
+        android:layout_height="@dimen/player__height"
+        android:layout_marginBottom="@dimen/padding_1"
         android:layout_weight="0"
+        app:controller_layout_id="@layout/exo_playback_control_view"
         app:fastforward_increment="1000"
+        app:layout_constraintBottom_toTopOf="@+id/step_instruction_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:rewind_increment="1000" />
 
     <TextView
         android:id="@+id/step_instruction_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_1"
         android:layout_weight="0"
-        android:padding="20dp"
+        android:padding="@dimen/padding_16"
+        android:text="@string/hardcoded_step_instruction"
         android:textSize="20sp"
-        android:text="@string/hardcoded_step_instruction"/>
-</LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/video_view" />
+</android.support.constraint.ConstraintLayout>

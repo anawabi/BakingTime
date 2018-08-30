@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="list_item_height">208dp</dimen>
-    <dimen name="cardview_text">24dp</dimen>
+    <dimen name="cardview_text">24sp</dimen>
     <dimen name="cardview_elevation">8dp</dimen>
+    <dimen name="cardview_height">80dp</dimen>
     <dimen name="divider_padding">2dp</dimen>
     <dimen name="cardview_margin">4dp</dimen>
     <dimen name="list_item_margin">4dp</dimen>
-
-    <!-- Misc -->
     <dimen name="cards_gutter_half">4dp</dimen>
-
-    <!-- Recipe Step Details -->
     <dimen name="recipe_step_image_height">150dp</dimen>
-
-    <!--Widget-->
+    <dimen name="padding_1">1dp</dimen>
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="recipe_img_height">270dp</dimen>
+    <dimen name="recipe_title_tv_height">40dp</dimen>
+    <dimen name="recipe_title_tv_constrains">32dp</dimen>
     <dimen name="widget_default_height">200dp</dimen>
     <dimen name="widget_default_width">200dp</dimen>
     <dimen name="widget_default_resize_width">180dp</dimen>
     <dimen name="widget_default_resize_height">110dp</dimen>
     <dimen name="widget_padding">4dp</dimen>
-
-    <!--
-Refer to App Widget Documentation for margin information
-http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
-    -->
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_lis_item_padding">16dp</dimen>
+    <dimen name="widget_header_height">60dp</dimen>
+    <dimen name="widget_header_text_size">18sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="player_timer_height">26dp</dimen>
+    <dimen name="player__height">320dp</dimen>
+    <dimen name="vedio_frame_width_land_tablet">400dp</dimen>
+    <dimen name="size_zero">0</dimen>
+    <dimen name="size_one">1</dimen>
 
 </resources>

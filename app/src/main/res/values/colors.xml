@@ -9,4 +9,5 @@
     <color name="colorGrayBackground">#F2F2F2</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="player_control_background">#cc000000</color>
 </resources>

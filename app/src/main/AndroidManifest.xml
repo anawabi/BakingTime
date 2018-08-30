@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.amannawabi.bakingtime">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,38 +13,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailRecipeListActivity"
+        <activity
+            android:name=".DetailRecipeListActivity"
             android:parentActivityName=".MainActivity"
-            android:supportsPictureInPicture="true" />
-        <activity android:name=".IngredientActivity"
-            android:parentActivityName=".MainActivity"
+            android:supportsPictureInPicture="true"
+            tools:targetApi="n" />
+        <activity
+            android:name=".IngredientActivity"
             android:label="@string/ingredient_name_hardcoded"
-            android:supportsPictureInPicture="true" />
-        <activity android:name=".StepActivity"
-            android:supportsPictureInPicture="true"/>
+            android:parentActivityName=".MainActivity"
+            android:supportsPictureInPicture="true"
+            tools:targetApi="n" />
+        <activity
+            android:name=".StepActivity"
+            android:supportsPictureInPicture="true"
+            tools:targetApi="n" />
 
-        <service
-            android:name=".widget.ListViewWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <service android:name=".widget.WidgetUpdateService" />
-
-        <receiver android:name=".widget.BakingAppWidget">
+        <receiver android:name=".Widget.BakingTimeWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/baking_app_widget_info" />
+                android:resource="@xml/baking_time_widget_info" />
         </receiver>
+
+        <service
+            android:name=".Widget.IngredientServiceWidget"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <service android:name=".Widget.UpdateService" />
+
     </application>
 
 </manifest>
